@@ -1,0 +1,24 @@
+{
+  "name": "Calculadora de Caixa",
+  "short_name": "Calc Caixa",
+  "description": "Calculadora de fechamento de caixa.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://placehold.co/192x192/0f172a/ffffff?text=C&font=sans-serif",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "https://placehold.co/512x512/0f172a/ffffff?text=C&font=sans-serif",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}
