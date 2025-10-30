@@ -1,0 +1,66 @@
+<main class="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto text-gray-200 font-sans">
+  <header class="text-center mb-8">
+    <h1 class="text-3xl sm:text-4xl font-bold text-white">Calculadora de Caixa</h1>
+    <p class="text-slate-400 mt-2">Adicione os valores para calcular o fechamento.</p>
+  </header>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    <app-value-input title="Notas" [values]="notas()" (valuesChange)="updateNotas($event)"></app-value-input>
+    <app-value-input title="Moedas" [values]="moedas()" (valuesChange)="updateMoedas($event)"></app-value-input>
+    <app-value-input title="Sangria" [values]="sangria()" (valuesChange)="updateSangria($event)"></app-value-input>
+    <app-value-input title="Cofre" [values]="cofre()" (valuesChange)="updateCofre($event)"></app-value-input>
+  </div>
+
+  <section class="bg-slate-800 rounded-lg p-6 shadow-lg">
+    <h2 class="text-2xl font-bold text-white mb-6 border-b border-slate-700 pb-3">Resultados</h2>
+
+    <div class="space-y-4">
+      <div title="Vale Moeda (Notas + Moedas)" class="flex justify-between items-center bg-slate-900/50 p-3 rounded-md">
+        <span class="text-slate-300">Vale Moeda</span>
+        <span class="font-bold text-lg text-cyan-400">{{ valeMoeda() | currency:'BRL' }}</span>
+      </div>
+
+      <div title="Sangria" class="flex justify-between items-center bg-slate-900/50 p-3 rounded-md">
+        <span class="text-slate-300">Sangria</span>
+        <span class="font-bold text-lg text-purple-400">{{ totalSangria() | currency:'BRL' }}</span>
+      </div>
+      
+      <div title="Total (Vale Moeda + Sangria)" class="flex justify-between items-center bg-slate-900/50 p-3 rounded-md">
+        <span class="text-slate-300">Total</span>
+        <span class="font-bold text-lg text-blue-400">{{ total() | currency:'BRL' }}</span>
+      </div>
+
+      <div title="Vale Moeda sugerido (Res. Final - Vale Moeda)" class="flex justify-between items-center bg-slate-900/50 p-3 rounded-md">
+        <span class="text-slate-300">Vale Moeda sugerido</span>
+        <span class="font-bold text-lg text-amber-400">{{ ajusteSugerido() | currency:'BRL' }}</span>
+      </div>
+
+      <div 
+        title="Resultado Final (Total - Cofre)"
+        class="flex justify-between items-center p-4 rounded-lg mt-4"
+        [class.bg-green-500/10]="resultadoFinal() >= 0"
+        [class.bg-red-500/10]="resultadoFinal() < 0"
+        [class.border-green-500]="resultadoFinal() >= 0"
+        [class.border-red-500]="resultadoFinal() < 0"
+      >
+        <span class="font-bold text-lg text-white">Resultado Final</span>
+        <span 
+          class="font-extrabold text-2xl"
+          [class.text-green-400]="resultadoFinal() >= 0"
+          [class.text-red-400]="resultadoFinal() < 0"
+        >
+          {{ resultadoFinal() | currency:'BRL' }}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-8 text-center">
+    <button
+      (click)="resetAll()"
+      class="bg-rose-600 text-white font-bold py-2 px-6 rounded-md hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-colors"
+    >
+      Limpar Tudo
+    </button>
+  </footer>
+</main>

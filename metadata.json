@@ -1,0 +1,5 @@
+{
+  "name": "Calculadora de Fechamento do Moedeiro",
+  "description": "Uma calculadora especial para auxiliar no fechamento de caixa, somando notas, moedas, sangrias e cofre para obter um resultado detalhado.",
+  "requestFramePermissions": []
+}
